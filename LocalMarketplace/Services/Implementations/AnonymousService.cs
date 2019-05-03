@@ -1,4 +1,5 @@
-﻿using LocalMarketplace.Models.DTOs;
+﻿using LocalMarketplace.Models.DatabaseModels;
+using LocalMarketplace.Models.DTOs;
 using LocalMarketplace.Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,13 @@ namespace LocalMarketplace.Services.Implementations
 {
     public class AnonymousService : IAnonymousService
     {
+        private readonly ProductContext productContext;
+
+        public AnonymousService(ProductContext productContext)
+        {
+            this.productContext = productContext;
+        }
+
         public Task<List<ProductGet>> GetAllProductsAsync()
         {
             throw new NotImplementedException();

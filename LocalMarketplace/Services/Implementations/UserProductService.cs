@@ -1,4 +1,5 @@
-﻿using LocalMarketplace.Models.DTOs;
+﻿using LocalMarketplace.Models.DatabaseModels;
+using LocalMarketplace.Models.DTOs;
 using LocalMarketplace.Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -7,8 +8,15 @@ using System.Threading.Tasks;
 
 namespace LocalMarketplace.Services.Implementations
 {
-    public class ProductService : IUserProductService
+    public class UserProductService : IUserProductService
     {
+        private readonly ProductContext productContext;
+
+        public UserProductService(ProductContext productContext)
+        {
+            this.productContext = productContext;
+        }
+
         public Task AddProductAsync(ProductAdd product)
         {
             throw new NotImplementedException();

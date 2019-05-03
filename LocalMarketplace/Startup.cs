@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LocalMarketplace.Models.DatabaseModels;
+using LocalMarketplace.Services.Implementations;
+using LocalMarketplace.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -21,9 +25,12 @@ namespace LocalMarketplace
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Dependency injections services 
+            services.AddSingleton<IAnonymousService, AnonymousService>();
+            services.AddSingleton<IUserProductService, UserProductService>();
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -31,6 +38,12 @@ namespace LocalMarketplace
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            // Database for storing data
+            services.AddDbContext<ProductContext>(options =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("LocalMarketplaceDataConnection"),
+                    x=>x.MigrationsAssembly("LocalMarketplace.Models.DatabaseModels"));
+            });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
