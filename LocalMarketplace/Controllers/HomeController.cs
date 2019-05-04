@@ -5,11 +5,22 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using LocalMarketplace.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace LocalMarketplace.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly UserManager<IdentityUser> userManager;
+        private readonly string userId;
+
+        public HomeController(UserManager<IdentityUser> userManager)
+        {
+            this.userManager = userManager;
+            //userId = userManager.GetUserId(User);
+        }
+
+
         public IActionResult Index()
         {
             return View();
@@ -24,7 +35,7 @@ namespace LocalMarketplace.Controllers
 
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Your contact page.";
+            ViewData["Message"] = "---TEST---." + userManager.GetUserId(User);
 
             return View();
         }

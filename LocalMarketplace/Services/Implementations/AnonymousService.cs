@@ -17,14 +17,16 @@ namespace LocalMarketplace.Services.Implementations
             this.productContext = productContext;
         }
 
-        public Task<List<ProductGet>> GetAllProductsAsync()
+        public List<Product> GetAllProducts()
         {
-            throw new NotImplementedException();
+            return productContext.Products.ToList();
         }
 
-        public Task<List<ProductGet>> SearchProductsAsync(string search)
+        public List<Product> SearchProducts(string search)
         {
-            throw new NotImplementedException();
+            return productContext.Products.Where(s => s.Name.Contains(search)).ToList();
         }
+
+
     }
 }

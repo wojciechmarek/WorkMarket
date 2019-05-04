@@ -1,17 +1,15 @@
-﻿using LocalMarketplace.Models.DTOs;
-using System;
+﻿using LocalMarketplace.Models.DatabaseModels;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace LocalMarketplace.Services.Interfaces
 {
     public interface IUserProductService
     {
-        Task<List<ProductGet>> GetAllProductsAsync();
-        Task<ProductGet> GetProductByIdAsync(int id);
-        Task AddProductAsync(ProductAdd product);
-        Task UpdateProductAsync(ProductAdd product);
-        Task RemoveProductAsync(int id);
+        List<Product> GetAllProducts(string userId);
+        Product GetProductById(int productId, string userId);
+        void AddProduct(Product product, string userId);
+        void UpdateProduct(Product product, string userId);
+        void RemoveProduct(int id, string userId);
     }
 }

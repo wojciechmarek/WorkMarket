@@ -1,10 +1,12 @@
 ﻿using LocalMarketplace.Models.DatabaseModels;
 using LocalMarketplace.Models.DTOs;
 using LocalMarketplace.Services.Interfaces;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.Razor;
 
 namespace LocalMarketplace.Services.Implementations
 {
@@ -17,29 +19,58 @@ namespace LocalMarketplace.Services.Implementations
             this.productContext = productContext;
         }
 
-        public Task AddProductAsync(ProductAdd product)
+        public void AddProduct(Product product, string userId)
         {
-            throw new NotImplementedException();
+            Product productToAdd = new Product()
+            {
+                UserId = userId,
+                Name = product.Name,
+                Description = product.Description,
+                Pictures = product.Pictures,
+            };
+
+            productContext.Products.Add(productToAdd);
+            productContext.SaveChanges();
         }
 
-        public Task<List<ProductGet>> GetAllProductsAsync()
+        public List<Product> GetAllProducts(string userId)
         {
-            throw new NotImplementedException();
+            return productContext.Products
+                .Where(p => p.UserId.Equals(userId))
+                .ToList();
         }
 
-        public Task<ProductGet> GetProductByIdAsync(int id)
+        public Product GetProductById(int productId, string userId)
         {
-            throw new NotImplementedException();
+            return productContext.Products
+                .Where(p => p.UserId.Equals(userId))
+                .Where(p => p.Id == productId)
+                .SingleOrDefault();
         }
 
-        public Task RemoveProductAsync(int id)
+        public void RemoveProduct(int productId, string userId)
         {
-            throw new NotImplementedException();
+            Product product = GetProductById(productId, userId);
+            if (product == null)
+                return;
+
+            productContext.Products.Remove(product);
+            productContext.SaveChanges();
+
         }
 
-        public Task UpdateProductAsync(ProductAdd product)
+        public void UpdateProduct(Product product, string userId)
         {
-            throw new NotImplementedException();
+            Product productToUpdate = GetProductById(product.Id, userId);
+            if (product == null)
+                return;
+
+            productToUpdate.Name = product.Name;
+            productToUpdate.Description = product.Description;
+            productToUpdate.Pictures = product.Pictures;
+
+            productContext.Products.Update(productToUpdate);
+            productContext.SaveChanges();
         }
     }
 }
