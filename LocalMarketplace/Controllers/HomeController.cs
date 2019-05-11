@@ -6,49 +6,99 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using LocalMarketplace.Models;
 using Microsoft.AspNetCore.Identity;
+using LocalMarketplace.Models.DTOs;
+using LocalMarketplace.Services.Interfaces;
+using System.Collections.ObjectModel;
 
 namespace LocalMarketplace.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly UserManager<IdentityUser> userManager;
+        private readonly IAnonymousService anonymousService;
+
         private readonly string userId;
 
-        public HomeController(UserManager<IdentityUser> userManager)
+        public HomeController(IAnonymousService anonymousService)
         {
-            this.userManager = userManager;
-            //userId = userManager.GetUserId(User);
+            this.anonymousService = anonymousService;
         }
 
+        ////////////////// PUBLIC METHODS //////////////////
 
+        // INDEX - GET
         public IActionResult Index()
         {
+            var last5products = anonymousService.GetAllProducts();
+
+            if (last5products == null)
+                return View(new List<ProductResponse>());
+            else
+            {
+                List<ProductResponse> last5productsList = new List<ProductResponse>();
+
+                foreach (var product in last5products)
+                {
+                    last5productsList.Add(new ProductResponse()
+                    {
+                        Id = product.Id,
+                        Name = product.Name,
+                        Description = product.Description,
+                        Pictures = PictureCollectionToList(product),
+                    });
+                }
+
+                return View(last5productsList);
+            }
+        }
+
+        public IActionResult Search()
+        {
             return View();
         }
 
-        public IActionResult About()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Search(string productToSearch)
         {
-            ViewData["Message"] = "Your application description page.";
+            if (ModelState.IsValid)
+            {
+                var searchedProducts = anonymousService.SearchProducts(productToSearch);
 
-            return View();
+                List<ProductResponse> searchedProductsList = new List<ProductResponse>();
+
+                foreach (var product in searchedProducts)
+                {
+                    searchedProductsList.Add(new ProductResponse()
+                    {
+                        Id = product.Id,
+                        Name = product.Name,
+                        Description = product.Description,
+                        Pictures = PictureCollectionToList(product),
+                    });
+                }
+
+                return View(searchedProductsList);
+            }
+            return RedirectToAction(nameof(Index));
+           
         }
 
-        public IActionResult Contact()
+        // HELPERS
+        private IList<Models.DTOs.Picture> PictureCollectionToList(Models.DatabaseModels.Product product)
         {
-            ViewData["Message"] = "---TEST---." + userManager.GetUserId(User);
+            IList<Models.DTOs.Picture> pictures = new List<Models.DTOs.Picture>();
 
-            return View();
+            if (product.Pictures != null)
+            {
+                foreach (var pictureUrl in product.Pictures)
+                {
+                    pictures.Add(new Models.DTOs.Picture() { Url = pictureUrl.Url });
+                }
+            }
+
+            return pictures;
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
     }
 }

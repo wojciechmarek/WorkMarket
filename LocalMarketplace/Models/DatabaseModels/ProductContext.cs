@@ -9,7 +9,7 @@ namespace LocalMarketplace.Models.DatabaseModels
     public class ProductContext : DbContext
     {
         public ProductContext(DbContextOptions<ProductContext> options)
-            :base(options)
+            : base(options)
         {
         }
 

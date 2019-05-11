@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 
 namespace LocalMarketplace.Models.DTOs
 {
-    public class ProductGet
+    public class Search
     {
+        public string ProductName { get; set; }
     }
 }

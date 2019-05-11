@@ -1,20 +1,13 @@
 ﻿@model IEnumerable<LocalMarketplace.Models.DTOs.ProductResponse>
-@{
-    ViewData["Title"] = "Home Page";
-}
-
-<h2>Last products</h2>
-<hr />
-<h4>List of 5 recent added products:</h4>
 
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.Display("Thumbnail")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Description)
+                @Html.DisplayNameFor(model => model.Name)
             </th>
         </tr>
     </thead>
@@ -23,10 +16,10 @@
         {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
+                <img height="auto" width="50px" src="@item.Pictures[0].Url" alt="Thumbnail image" />
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Description)
+                @Html.DisplayFor(modelItem => item.Name)
             </td>
         </tr>
         }

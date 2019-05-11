@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Razor;
+using Microsoft.EntityFrameworkCore;
 
 namespace LocalMarketplace.Services.Implementations
 {
@@ -36,6 +37,7 @@ namespace LocalMarketplace.Services.Implementations
         public List<Product> GetAllProducts(string userId)
         {
             return productContext.Products
+                .Include(p=>p.Pictures)
                 .Where(p => p.UserId.Equals(userId))
                 .ToList();
         }
@@ -43,6 +45,7 @@ namespace LocalMarketplace.Services.Implementations
         public Product GetProductById(int productId, string userId)
         {
             return productContext.Products
+                .Include(p => p.Pictures)
                 .Where(p => p.UserId.Equals(userId))
                 .Where(p => p.Id == productId)
                 .SingleOrDefault();

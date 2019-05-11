@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
+using AutoMapper;
+using LocalMarketplace.Mapping;
 using LocalMarketplace.Models.DatabaseModels;
 using LocalMarketplace.Services.Implementations;
 using LocalMarketplace.Services.Interfaces;
@@ -28,8 +31,8 @@ namespace LocalMarketplace
         public void ConfigureServices(IServiceCollection services)
         {
             // Dependency injections services 
-            services.AddSingleton<IAnonymousService, AnonymousService>();
-            services.AddSingleton<IUserProductService, UserProductService>();
+            services.AddScoped<IAnonymousService, AnonymousService>();
+            services.AddScoped<IUserProductService, UserProductService>();
 
             services.Configure<CookiePolicyOptions>(options =>
             {
@@ -41,11 +44,25 @@ namespace LocalMarketplace
             // Database for storing data
             services.AddDbContext<ProductContext>(options =>
             {
-                options.UseSqlServer(Configuration.GetConnectionString("LocalMarketplaceDataConnection"),
-                    x=>x.MigrationsAssembly("LocalMarketplace.Models.DatabaseModels"));
+                options.UseSqlServer(Configuration.GetConnectionString("LocalMarketplaceDataConnection"));
             });
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            // Automapper
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new ProductMappingProfile());
+                mc.CreateMissingTypeMaps = true;
+            });
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
+
+            // Mvc
+            services.AddMvc()
+                    .AddRazorPagesOptions(options =>
+                    {
+                        options.Conventions.AuthorizeFolder("/Views/Product");
+                    })
+                    .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

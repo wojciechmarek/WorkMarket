@@ -46,6 +46,8 @@ namespace LocalMarketplace.Migrations.Product
 
                     b.Property<string>("Name");
 
+                    b.Property<string>("UserId");
+
                     b.HasKey("Id");
 
                     b.ToTable("Products");

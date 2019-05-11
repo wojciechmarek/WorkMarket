@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LocalMarketplace.Migrations.Product
 {
     [DbContext(typeof(ProductContext))]
-    [Migration("20190503093033_CreateStorageDatabaseSchema")]
-    partial class CreateStorageDatabaseSchema
+    [Migration("20190506203926_AddSchemaForDataDatabase")]
+    partial class AddSchemaForDataDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -47,6 +47,8 @@ namespace LocalMarketplace.Migrations.Product
                     b.Property<string>("Description");
 
                     b.Property<string>("Name");
+
+                    b.Property<string>("UserId");
 
                     b.HasKey("Id");
 

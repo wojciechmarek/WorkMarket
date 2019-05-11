@@ -19,7 +19,7 @@ namespace LocalMarketplace.Services.Implementations
 
         public List<Product> GetAllProducts()
         {
-            return productContext.Products.ToList();
+            return productContext.Products.OrderByDescending(o=>o.Id).Take(5).ToList();
         }
 
         public List<Product> SearchProducts(string search)
