@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LocalMarketplace.Migrations.Product
 {
-    public partial class AddSchemaForDataDatabase : Migration
+    public partial class DataSchema : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

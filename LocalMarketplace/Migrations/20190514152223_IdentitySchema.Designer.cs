@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LocalMarketplace.Migrations
 {
     [DbContext(typeof(LocalMarketplaceContext))]
-    [Migration("20190502191121_CreateIdentitySchema")]
-    partial class CreateIdentitySchema
+    [Migration("20190514152223_IdentitySchema")]
+    partial class IdentitySchema
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

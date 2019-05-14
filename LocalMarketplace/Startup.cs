@@ -41,6 +41,7 @@ namespace LocalMarketplace
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+
             // Database for storing data
             services.AddDbContext<ProductContext>(options =>
             {

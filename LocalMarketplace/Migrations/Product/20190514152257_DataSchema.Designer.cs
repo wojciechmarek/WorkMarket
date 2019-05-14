@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LocalMarketplace.Migrations.Product
 {
     [DbContext(typeof(ProductContext))]
-    [Migration("20190506203926_AddSchemaForDataDatabase")]
-    partial class AddSchemaForDataDatabase
+    [Migration("20190514152257_DataSchema")]
+    partial class DataSchema
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

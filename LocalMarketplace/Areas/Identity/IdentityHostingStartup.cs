@@ -16,8 +16,7 @@ namespace LocalMarketplace.Areas.Identity
         {
             builder.ConfigureServices((context, services) => {
                 services.AddDbContext<LocalMarketplaceContext>(options =>
-                    options.UseSqlServer(
-                        context.Configuration.GetConnectionString("LocalMarketplaceIdentityConnection")));
+                    options.UseSqlServer(context.Configuration.GetConnectionString("LocalMarketplaceIdentityConnection")));
 
                 services.AddDefaultIdentity<IdentityUser>()
                     .AddEntityFrameworkStores<LocalMarketplaceContext>();

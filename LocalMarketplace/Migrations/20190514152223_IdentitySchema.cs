@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LocalMarketplace.Migrations
 {
-    public partial class CreateIdentitySchema : Migration
+    public partial class IdentitySchema : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
