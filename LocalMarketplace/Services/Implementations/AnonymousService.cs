@@ -24,7 +24,7 @@ namespace LocalMarketplace.Services.Implementations
 
         public List<Product> SearchProducts(string search)
         {
-            return productContext.Products.Where(s => s.Name.Contains(search)).ToList();
+            return productContext.Products.Where(s => s.Title.Contains(search)).ToList();
         }
 
 

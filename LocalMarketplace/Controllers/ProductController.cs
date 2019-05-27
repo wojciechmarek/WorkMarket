@@ -73,7 +73,12 @@ namespace LocalMarketplace.Controllers
                     productList.Add(new ProductResponse()
                     {
                         Id = product.Id,
-                        Name = product.Name,
+                        Title = product.Title,
+                        Category = product.Category,
+                        Contact = product.Contact,
+                        Payment = product.Payment,
+                        WorkLength = product.WorkLength,
+                        WorkType = product.WorkType,
                         Description = product.Description,
                         Pictures = PictureCollectionToList(product),
                     });
@@ -98,7 +103,13 @@ namespace LocalMarketplace.Controllers
             {
                 Product newProduct = new Product()
                 {
-                    Name = product.Name,
+                    Id = product.Id,
+                    Title = product.Title,
+                    Category = product.Category,
+                    Contact = product.Contact,
+                    Payment = product.Payment,
+                    WorkLength = product.WorkLength,
+                    WorkType = product.WorkType,
                     Description = product.Description,
                     Pictures = PictureListToCollection(product),
                 };
@@ -156,8 +167,12 @@ namespace LocalMarketplace.Controllers
                 ProductResponse product = new ProductResponse()
                 {
                     Id = userProductById.Id,
-                    Name = userProductById.Name,
-                    Description = userProductById.Description,
+                    Title = userProductById.Title,
+                    Category = userProductById.Category,
+                    Contact = userProductById.Contact,
+                    WorkType = userProductById.WorkType,
+                    Payment = userProductById.Payment,
+                    WorkLength = userProductById.WorkLength,
                     Pictures = PictureCollectionToList(userProductById),
                 };
 
@@ -184,8 +199,12 @@ namespace LocalMarketplace.Controllers
                 ProductRequest product = new ProductRequest()
                 {
                     Id = userProductById.Id,
-                    Name = userProductById.Name,
-                    Description = userProductById.Description,
+                    Title = userProductById.Title,
+                    Category = userProductById.Category,
+                    Contact = userProductById.Contact,
+                    WorkType = userProductById.WorkType,
+                    Payment = userProductById.Payment,
+                    WorkLength = userProductById.WorkLength,
                     Pictures = PictureCollectionToList(userProductById),
                 };
 
@@ -208,7 +227,12 @@ namespace LocalMarketplace.Controllers
                 Product editProduct = new Product()
                 {
                     Id = product.Id,
-                    Name = product.Name,
+                    Title = product.Title,
+                    Category = product.Category,
+                    Contact = product.Contact,
+                    Payment = product.Payment,
+                    WorkLength = product.WorkLength,
+                    WorkType = product.WorkType,
                     Description = product.Description,
                     Pictures = PictureListToCollection(product),
                 };

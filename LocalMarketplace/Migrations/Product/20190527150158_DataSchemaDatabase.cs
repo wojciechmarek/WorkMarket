@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LocalMarketplace.Migrations.Product
 {
-    public partial class DataSchema : Migration
+    public partial class DataSchemaDatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,8 +13,13 @@ namespace LocalMarketplace.Migrations.Product
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true),
+                    Title = table.Column<string>(nullable: true),
+                    Category = table.Column<string>(nullable: true),
+                    WorkLength = table.Column<string>(nullable: true),
+                    WorkType = table.Column<string>(nullable: true),
+                    Payment = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
+                    Contact = table.Column<string>(nullable: true),
                     UserId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>

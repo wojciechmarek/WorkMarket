@@ -7,13 +7,13 @@
     <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/Index", new { area = "" })" method="post" id="logoutForm" class="navbar-right">
         <ul class="nav navbar-nav navbar-right">
             <li>
-                <a asp-area="" asp-controller="Product" asp-action="Add">Add Product</a>
+                <a asp-area="" asp-controller="Product" asp-action="Add">Dodaj nowe ogłosznie</a>
             </li>
             <li>
                 <a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
             </li>
             <li>
-                <button type="submit" class="btn btn-link navbar-btn navbar-link">Logout</button>
+                <button type="submit" class="btn btn-link navbar-btn navbar-link">Wyloguj</button>
             </li>
         </ul>
     </form>
@@ -21,7 +21,7 @@
 else
 {
     <ul class="nav navbar-nav navbar-right">
-        <li><a asp-area="Identity" asp-page="/Account/Register">Register</a></li>
-        <li><a asp-area="Identity" asp-page="/Account/Login">Login</a></li>
+        <li><a asp-area="Identity" asp-page="/Account/Register">Zarejestruj się</a></li>
+        <li><a asp-area="Identity" asp-page="/Account/Login">Zaloguj</a></li>
     </ul>
 }

@@ -4,18 +4,18 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Delete product</h2>
+<h2>Usuń ogłosznie</h2>
 <hr />
-<h4>Are you sure you want to delete this?</h4>
+<h4>Czy na pewno chcesz usunąc tą ofertę?</h4>
 
 <div>
 <hr />
 <dl class="dl-horizontal">
     <dt>
-        @Html.DisplayNameFor(model => model.Name)
+        @Html.DisplayNameFor(model => model.Title)
     </dt>
     <dd>
-        @Html.DisplayFor(model => model.Name)
+        @Html.DisplayFor(model => model.Title)
     </dd>
     <dt>
         @Html.DisplayNameFor(model => model.Description)
@@ -27,7 +27,7 @@
 
 <form asp-action="Delete">
     <input type="hidden" asp-for="Id" />
-    <input type="submit" value="Delete" class="btn btn-default" /> <br />
-    <a asp-action="Index">Back to List</a>
+    <input type="submit" value="Usuń" class="btn btn-default" /> <br />
+    <a asp-action="Index">Wróć do listy swoich ogłoszeń</a>
 </form>
 </div>

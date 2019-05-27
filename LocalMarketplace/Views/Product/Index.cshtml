@@ -2,24 +2,21 @@
 @inject SignInManager<IdentityUser> SignInManager
 @model IEnumerable<LocalMarketplace.Models.DTOs.ProductResponse>
 @{
-    ViewData["Title"] = "User Products";
+    ViewData["Title"] = "Moje ogłosznia";
 }
 
-<h2>User products</h2>
+<h2>Ogłoszenia użytkownika</h2>
 <hr />
-<h4>User's list of products:</h4>
+<h4>Lista ogłoszeń użytkownika:</h4>
 
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayName("Thumbnail")
+                @Html.DisplayNameFor(model => model.Title)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayName("Controls")
+                @Html.DisplayName("Nawigacja")
             </th>
         </tr>
     </thead>
@@ -28,17 +25,14 @@
         {
         <tr>
             <td>
-                <img height="auto" width="50px" src="@item.Pictures[0].Url" alt="Thumbnail image" />
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
+                @Html.DisplayFor(modelItem => item.Title)
             </td>
             @if (SignInManager.IsSignedIn(User))
             {
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edytuj</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Szczególy</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Usuń</a>
             </td>
             }
 

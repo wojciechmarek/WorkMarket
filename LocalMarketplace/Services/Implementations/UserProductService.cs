@@ -25,8 +25,13 @@ namespace LocalMarketplace.Services.Implementations
             Product productToAdd = new Product()
             {
                 UserId = userId,
-                Name = product.Name,
+                Title = product.Title,
                 Description = product.Description,
+                Category = product.Category,
+                Contact = product.Contact,
+                Payment = product.Payment,
+                WorkLength = product.WorkLength,
+                WorkType = product.WorkType,
                 Pictures = product.Pictures,
             };
 
@@ -68,8 +73,13 @@ namespace LocalMarketplace.Services.Implementations
             if (product == null)
                 return;
 
-            productToUpdate.Name = product.Name;
+            productToUpdate.Title = product.Title;
             productToUpdate.Description = product.Description;
+            productToUpdate.Category = product.Category;
+            productToUpdate.Contact = product.Contact;
+            productToUpdate.Payment = product.Payment;
+            productToUpdate.WorkLength = product.WorkLength;
+            productToUpdate.WorkType = product.WorkType;
             productToUpdate.Pictures = product.Pictures;
 
             productContext.Products.Update(productToUpdate);

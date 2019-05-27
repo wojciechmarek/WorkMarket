@@ -4,9 +4,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Add new product</h2>
+<h2>Dodaj ofertę</h2>
 <hr />
-<h4>Fill fields for new product</h4>
+<h4>Wypełnij pola by dodać nową ofertę</h4>
 
 <hr />
 <div class="row">
@@ -14,41 +14,50 @@
         <form asp-action="Add">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Description" class="control-label"></label>
                 <input asp-for="Description" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
-            <hr />
-            <p>URLs to product photos:</p>
             <div class="form-group">
-                <label asp-for="Pictures[0].Url" class="control-label">Photo 1</label>
-                <input asp-for="Pictures[0].Url" class="form-control" />
-                <span asp-validation-for="Pictures[0].Url" class="text-danger"></span>
+                <label asp-for="Category" class="control-label"></label>
+                <input asp-for="Category" class="form-control" />
+                <span asp-validation-for="Category" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Pictures[1].Url" class="control-label">Photo 2</label>
-                <input asp-for="Pictures[1].Url" class="form-control" />
-                <span asp-validation-for="Pictures[1].Url" class="text-danger"></span>
+                <label asp-for="WorkLength" class="control-label"></label>
+                <input asp-for="WorkLength" class="form-control" />
+                <span asp-validation-for="WorkLength" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Pictures[2].Url" class="control-label">Photo 3</label>
-                <input asp-for="Pictures[2].Url" class="form-control" />
-                <span asp-validation-for="Pictures[2].Url" class="text-danger"></span>
+                <label asp-for="WorkType" class="control-label"></label>
+                <input asp-for="WorkType" class="form-control" />
+                <span asp-validation-for="WorkType" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <label asp-for="Payment" class="control-label"></label>
+                <input asp-for="Payment" class="form-control" />
+                <span asp-validation-for="Payment" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Contact" class="control-label"></label>
+                <input asp-for="Contact" class="form-control" />
+                <span asp-validation-for="Contact" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Dodaj ogłoszenie" class="btn btn-default" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Wróć do listy swoich ogłoszeń</a>
 </div>
 
 @section Scripts {

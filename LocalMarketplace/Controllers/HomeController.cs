@@ -41,7 +41,12 @@ namespace LocalMarketplace.Controllers
                     last5productsList.Add(new ProductResponse()
                     {
                         Id = product.Id,
-                        Name = product.Name,
+                        Title = product.Title,
+                        Category = product.Category,
+                        Contact = product.Contact,
+                        Payment = product.Payment,
+                        WorkLength = product.WorkLength,
+                        WorkType = product.WorkType,
                         Description = product.Description,
                         Pictures = PictureCollectionToList(product),
                     });
@@ -71,7 +76,12 @@ namespace LocalMarketplace.Controllers
                     searchedProductsList.Add(new ProductResponse()
                     {
                         Id = product.Id,
-                        Name = product.Name,
+                        Title = product.Title,
+                        Category = product.Category,
+                        Contact = product.Contact,
+                        Payment = product.Payment,
+                        WorkLength = product.WorkLength,
+                        WorkType = product.WorkType,
                         Description = product.Description,
                         Pictures = PictureCollectionToList(product),
                     });

@@ -4,10 +4,10 @@
     <thead>
         <tr>
             <th>
-                @Html.Display("Thumbnail")
+                @Html.Display("Tytuł")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.DisplayNameFor(model => model.Title)
             </th>
         </tr>
     </thead>
@@ -16,10 +16,10 @@
         {
         <tr>
             <td>
-                <img height="auto" width="50px" src="@item.Pictures[0].Url" alt="Thumbnail image" />
+                @Html.Display("Opis")
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
+                @Html.DisplayFor(modelItem => item.Description)
             </td>
         </tr>
         }

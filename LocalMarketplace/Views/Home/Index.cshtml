@@ -1,17 +1,17 @@
 ﻿@model IEnumerable<LocalMarketplace.Models.DTOs.ProductResponse>
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Strona głowna";
 }
 
-<h2>Last products</h2>
+<h2>Ostatnio dodane</h2>
 <hr />
-<h4>List of 5 recent added products:</h4>
+<h4>Lista 5 ostatnio dodanych ofert pracy:</h4>
 
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.DisplayNameFor(model => model.Title)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Description)
@@ -23,7 +23,7 @@
         {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
+                @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)

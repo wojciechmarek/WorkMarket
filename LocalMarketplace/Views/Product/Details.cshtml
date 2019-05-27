@@ -4,33 +4,68 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Product details</h2>
+<h2>Szczegóły ogłoszenia</h2>
 <hr />
 <div>
-    <h4>Product</h4>
+    <h4>Ogłoszenie</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.Title)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Name)
+            @Html.DisplayFor(model => model.Title)
         </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.Description)
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Description)
         </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkLength)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.WorkLength)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.WorkType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Payment)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Payment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Contact)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Contact)
+        </dd>
+
+
+
     </dl>
 </div>
-<img src="@Model.Pictures[0].Url" alt="Thumbnail image" class="img-responsive center-block"/> <br />
-<img src="@Model.Pictures[1].Url" alt="Thumbnail image" class="img-responsive center-block"/> <br />
-<img src="@Model.Pictures[2].Url" alt="Thumbnail image" class="img-responsive center-block"/> <br />
-
 
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edytuj</a> |
+    <a asp-action="Index">Wróć do listy swoich ogłoszeń</a>
 </div>
 

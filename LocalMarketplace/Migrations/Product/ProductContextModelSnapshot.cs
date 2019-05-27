@@ -42,11 +42,21 @@ namespace LocalMarketplace.Migrations.Product
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Category");
+
+                    b.Property<string>("Contact");
+
                     b.Property<string>("Description");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Payment");
+
+                    b.Property<string>("Title");
 
                     b.Property<string>("UserId");
+
+                    b.Property<string>("WorkLength");
+
+                    b.Property<string>("WorkType");
 
                     b.HasKey("Id");
 
